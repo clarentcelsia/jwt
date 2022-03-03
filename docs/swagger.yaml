@@ -1,6 +1,31 @@
 basePath: /api/v1/restaurant
-consumes:
-- application/json
+definitions:
+  model.Base:
+    properties:
+      crt_at:
+        type: string
+      upd_at:
+        type: string
+    type: object
+  model.Customer:
+    properties:
+      base:
+        $ref: '#/definitions/model.Base'
+      customer_address:
+        type: string
+      customer_dob:
+        type: string
+      customer_email:
+        type: string
+      customer_id:
+        type: string
+      customer_name:
+        type: string
+      customer_phone:
+        type: string
+      is_deleted:
+        type: boolean
+    type: object
 host: localhost:8081
 info:
   contact:
@@ -9,9 +34,27 @@ info:
     or operation.
   title: Web Order API
   version: "1.0"
-paths: {}
-produces:
-- application/json
-schemes:
-- ""
+paths:
+  /user/customer:
+    post:
+      consumes:
+      - application/json
+      description: do ping
+      parameters:
+      - description: customer
+        in: body
+        name: Data
+        required: true
+        schema:
+          $ref: '#/definitions/model.Customer'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: ping example
+      tags:
+      - example
 swagger: "2.0"

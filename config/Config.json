@@ -3,7 +3,7 @@
         "server": "localhost",
         "portdb": 5432,
         "username": "postgres",
-        "password": "",
+        "password": "123",
         "dbname": "dbrestaurant"
     },
     "token":{

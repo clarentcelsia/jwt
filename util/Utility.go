@@ -3,7 +3,6 @@ package util
 import (
 	"database/sql"
 	"restaurant/config"
-	"restaurant/util"
 
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/crypto/bcrypt"
@@ -30,7 +29,7 @@ func PasswordComparator(hashedPassword string, plainPassword string) bool {
 func CheckConnection() *sql.DB {
 	db, errdb := config.GetConnection()
 	if errdb != nil {
-		log.Error(util.MISSING_CONNECTION)
+		log.Error(MISSING_CONNECTION)
 		log.Fatal(errdb)
 	}
 	return db
